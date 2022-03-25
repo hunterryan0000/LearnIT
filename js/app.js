@@ -11,13 +11,18 @@ function updateProblemAndScore() {
 
     if(curr_problem <= 10) {
         newProblem();
-    } 
+    } else {
+        let hide = document.querySelectorAll('.show-hide');
+        
+        hide.forEach(element => {
+            element.style.display = "none";
+            curr_problem = 10;
+            problem.innerText = curr_problem.toString();
+        })
+    }
 }
 
 function start() {
-    let problem = document.getElementsByClassName("currentProblem")[0];
-    problem.addEventListener
-
     let answers = document.querySelectorAll("li");
 
     answers.forEach(element => {
@@ -28,7 +33,9 @@ function start() {
                 curr_score++;
             }
 
+            
             curr_problem++;
+            
             updateProblemAndScore();
         })
     });
@@ -74,5 +81,11 @@ document.addEventListener("DOMContentLoaded", event => {
         curr_score = 0;
         updateProblemAndScore();
         newProblem();
+
+        let show = document.querySelectorAll('.show-hide');
+        
+        show.forEach(element => {
+            element.style.display = "block";
+        });
     });
 })
